@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/main.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blog: Index</title>
+</head>
+<body>
+<div class="bg-blue-500 mt-5 text-white p-4">
+    This is a Tailwind CSS component.
+</div>
+<div class="container">
+    <ul>
+        {{ range .posts }}
+        <li><a href="/{{ . }}">{{ . }}</a></li>
+        {{ end }}
+    </ul>
+</div>
+</body>
+</html>
