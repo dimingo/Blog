@@ -4,6 +4,9 @@ import (
 	"example.com/myBlogWorkspace/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/russross/blackfriday/v2"
+
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -25,6 +28,30 @@ func Welcome(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.tmpl.html", gin.H{
 		"posts": posts,
 	})
+}
+
+func GetBlogPostHandler(c *gin.Context) {
+	postName := c.Param("postName")
+
+	fmt.Println(postName)
+
+	mdfile, err := os.ReadFile("./markdown/" + postName)
+
+	if err != nil {
+		fmt.Println(err)
+		c.HTML(http.StatusNotFound, "error.tmpl.html", nil)
+		c.Abort()
+		return
+	}
+	postHTML := template.HTML(blackfriday.Run([]byte(mdfile)))
+
+	post := models.Post{Title: postName, Content: postHTML}
+
+	c.HTML(http.StatusOK, "post.tmpl.html", gin.H{
+		"Title":   post.Title,
+		"Content": post.Content,
+	})
+
 }
 
 func CreateBlogPostHandler(c *gin.Context) {
