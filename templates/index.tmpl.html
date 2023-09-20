@@ -9,25 +9,28 @@
 
 
 <body class="bg-gray-100 font-sans">
-
-<main class="container">
-    <header class="py-12">
+<main class="container grid grid-cols-5 ">
+    <header class="py-6 col-start-2 col-span-3 -mb-6">
         <div class=" mx-auto text-center">
             <img class="inline-block w-40 h-40 rounded-full shadow-xl ring-2 ring-white" src="https://portfolio-ketcha-zi8x.vercel.app/images/dimingoDev.jpeg" alt="">
-            <h1 class="text-4xl font-semibold pt-4 ">Mitchel Ketcha</h1><code class="text-green-600 px-2 py-2 m-2 animate-blink">Dimingo<span>_</span></code>
-            <p class="text-gray-600 text-sm italic font-light">Tech Enthusiast (Artist / Developer / Designer)
+            <h1 class="text-4xl font-semibold pt-4 -mb-3 ">Mitchel Ketcha</h1><code class="text-green-600 px-2 py-2 m-2 animate-blink">Dimingo<span>_</span></code>
+            <p class="text-gray-600 text-sm italic font-light text-center">Tech Enthusiast (Artist / Developer / Designer)
             </p>
         </div>
     </header>
-    <div class=" mx-auto">
-        <div class="max-w-2xl mx-auto grid grid-cols- md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <h2 class="text-center col-start-2 col-span-3">
+        Dimingo  Blogs
+    </h2>
+    <div class=" mx-auto  col-start-2 col-span-3">
+
+        <div class="max-w-2xl mx-auto grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Blog Post 1 -->
             <ul>
                 {{ range .posts }}
                 <li>
                     <a href="/{{ . }}" class="whitespace-nowrap">
                         <small class="text-muted mx-2 text-base	 ">2023-04-09</small>
-                        <span class="font-semibold text-xl	hover:underline">{{ . }} this is the title</span>
+                        <span class="font-semibold text-xl	hover:underline">{{ . }}</span>
                     </a>
                 </li>
                 {{ end }}
@@ -36,6 +39,7 @@
     </div>
 </main>
 <footer class="text-center mt-4">
+
             <section class="container flex gap-2 justify-center">
         <a href="#" class="">
             <!-- Github -->
